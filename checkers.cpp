@@ -11,17 +11,31 @@
  *		print the grid
  *	while the user doesn't say No
  * 
- * \todo get rows and cols
  * \todo repeat while user doesn't say No
+ * \todo add a MAXROWS
  *********************************************************************/
 #include <iostream>
 
 using namespace std;
 
 int main() {
+	const int MAXCOLS = 40;
+	int userRows = 0;
+	int userCols = 0;
 
-	for (int row = 1; row <= 8; ++row) {
-		for (int column = 1; column <= 8; ++column) {
+	cout << "How many rows? ";
+	cin >> userRows;
+
+	do {
+		cout << "How many columns? " ;
+		cin >> userCols;
+		if (userCols > MAXCOLS) {
+			cout << "I can't do that, Dave. It can't be more than " << MAXCOLS << "." << endl;
+		}
+	} while (userCols > MAXCOLS);
+
+	for (int row = 1; row <= userRows; ++row ) {
+		for (int column = 1; column <= userCols; ++column) {
 
 			/* for each odd row*/
 			if (row % 2 == 1) {
